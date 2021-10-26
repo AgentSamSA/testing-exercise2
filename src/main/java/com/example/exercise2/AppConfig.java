@@ -21,13 +21,28 @@ public class AppConfig {
         return new NumToChar();
     }
 
+    @Bean(name = "iDivideByTwo")
+    public IDivideByTwo createDivideByTwo() {
+        return new DivideByTwo();
+    }
+
     @Bean(name = "iFlow")
     public IFlow createFlow() {
         return new Flow(createCharToNum(), createMultiplyByTwo(), createNumToChar());
     }
 
     @Bean(name = "iFlowLooper")
-    public IFlowLooper creatFlowLooper() {
+    public IFlowLooper createFlowLooper() {
         return new FlowLooper(createFlow());
+    }
+
+    @Bean(name = "iDecryptFlow")
+    public IDecryptFlow createDecryptFlow() {
+        return new DecryptFlow(createCharToNum(), createDivideByTwo(), createNumToChar());
+    }
+
+    @Bean(name = "iDecryptFlowLooper")
+    public IDecryptFlowLooper creatDecryptFlowLooper() {
+        return new DecryptFlowLooper(createDecryptFlow());
     }
 }

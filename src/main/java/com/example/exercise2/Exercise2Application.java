@@ -11,14 +11,28 @@ import org.springframework.context.support.AbstractApplicationContext;
 public class Exercise2Application {
 
 	public static void main(String[] args) {
-		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
-		IFlowLooper IFL = context.getBean("iFlowLooper", FlowLooper.class);
+		ApplicationContext contextEncrypt = new AnnotationConfigApplicationContext(AppConfig.class);
+		IFlowLooper IFL = contextEncrypt.getBean("iFlowLooper", FlowLooper.class);
+
+		ApplicationContext contextDecrypt = new AnnotationConfigApplicationContext(AppConfig.class);
+		IDecryptFlowLooper IDFL = contextDecrypt.getBean("iDecryptFlowLooper", DecryptFlowLooper.class);
+
 		Scanner s = new Scanner(System.in);
-		System.out.println("Enter your message: ");
-		String message = s.nextLine();
-		System.out.println(IFL.getResult(message));
+		System.out.println("Enter \'e\' to encrypt or \'d\' to decrypt");
+		String choice = s.nextLine();
+		
+		if (choice.equals("e")) {
+			System.out.println("Enter your message to encrypt: ");
+			String message = s.nextLine();
+			System.out.println(IFL.getResult(message));
+		} else if (choice.equals("d")) {
+			System.out.println("Enter your message to decrypt: ");
+			String message = s.nextLine();
+			System.out.println(IDFL.getResult(message));			
+		}
 		s.close();
-		((AbstractApplicationContext)context).close();
+		((AbstractApplicationContext)contextEncrypt).close();
+		((AbstractApplicationContext)contextDecrypt).close();
 	}
 }
 
