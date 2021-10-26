@@ -10,13 +10,8 @@ public class CharToNum implements ICharToNum {
         if (alphabet.contains(s.toLowerCase())) {
             return alphabet.indexOf(s.toLowerCase()) + 1;
         } else if (s.equals(" ")) {
-            Random r = new Random();
-            int rand = r.nextInt(52 - 27) + 27;
-            
-            if (rand % 2 == 0) {
-                rand--;
-            }
-            return rand;
+            Random rand = new Random();
+            return 26 + rand.nextInt(13) * 2 + 1;
         } else if (numbers.contains(s)) {
             return (10 - numbers.indexOf(s)) % 10;
         }

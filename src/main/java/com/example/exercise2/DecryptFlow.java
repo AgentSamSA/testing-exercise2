@@ -13,7 +13,12 @@ public class DecryptFlow implements IDecryptFlow {
 
     public String getResult(String s) {
         String numbers = "0123456789";
+        String alphabetUppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         int num = _ICTN.getResult(s);
+
+        if (alphabetUppercase.contains(s)) {
+            num = _ICTN.getResult(s) + 26;
+        }
 
         if (num != -1) {
             if (num % 2 != 0) {

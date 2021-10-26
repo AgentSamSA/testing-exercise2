@@ -21,6 +21,9 @@ public class FlowTests {
     @Mock
     INumToChar mockNumToChar = mock(INumToChar.class);
 
+    @Mock
+    IFlow mockFlow = mock(IFlow.class);
+
     @Test
     public void givenLowercaseACallCharToNumOnce() {
         //Given: I am a user
@@ -217,21 +220,17 @@ public class FlowTests {
     }
 
     @Test
-    public void givenABCCallCharToNumThreeTimes() {
+    public void givenABCCallFlowThreeTimes() {
         //Given: I am a user
-        given(mockCharToNum.getResult("a")).willReturn(1);
-        given(mockMultiplyByTwo.getResult(1)).willReturn(2);
-        given(mockNumToChar.getResult(2)).willReturn("b");
-        given(mockCharToNum.getResult("b")).willReturn(2);
-        given(mockMultiplyByTwo.getResult(2)).willReturn(4);
-        given(mockNumToChar.getResult(4)).willReturn("d");
-        given(mockCharToNum.getResult("c")).willReturn(3);
-        given(mockMultiplyByTwo.getResult(3)).willReturn(6);
-        given(mockNumToChar.getResult(6)).willReturn("f");
+        given(mockFlow.getResult("a")).willReturn("b");
+        given(mockFlow.getResult("b")).willReturn("d");
+        given(mockFlow.getResult("c")).willReturn("f");
         //When: I enter the string "abc"
-        IFlow IF = new Flow(mockCharToNum, mockMultiplyByTwo, mockNumToChar);
-        IF.getResult("abc");
-        //Then: CharToNum will be called 3 times
-        verify(mockCharToNum, times(3)).getResult("a");
+        IFlowLooper IFL = new FlowLooper(mockFlow);
+        IFL.getResult("abc");
+        //Then: Flow will be called 3 times total
+        verify(mockFlow, times(1)).getResult("a");
+        verify(mockFlow, times(1)).getResult("b");
+        verify(mockFlow, times(1)).getResult("c");
     }
 }
