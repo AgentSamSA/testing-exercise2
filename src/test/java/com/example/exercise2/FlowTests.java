@@ -178,41 +178,60 @@ public class FlowTests {
     }
 
     @Test
-    public void givenOneCallCharToNumOnce() {
+    public void givenExclamationPointCallCharToNumOnce() {
         //Given I am a user
-        given(mockCharToNum.getResult("1")).willReturn(-1);
+        given(mockCharToNum.getResult("!")).willReturn(-1);
         given(mockMultiplyByTwo.getResult(-1)).willReturn(-2);
         given(mockNumToChar.getResult(-2)).willReturn("");
-        //When I enter the string "1"
+        //When I enter the string "!"
         IFlow IF = new Flow(mockCharToNum, mockMultiplyByTwo, mockNumToChar);
-        IF.getResult("1");
+        IF.getResult("!");
         //Then: CharToNum will be called one time
-        verify(mockCharToNum, times(1)).getResult("1");
+        verify(mockCharToNum, times(1)).getResult("!");
     }
 
     @Test
-    public void givenOneCallMultiplyByTwoZeroTimes() {
+    public void givenExclamationPointCallMultiplyByTwoZeroTimes() {
         //Given I am a user
-        given(mockCharToNum.getResult("1")).willReturn(-1);
+        given(mockCharToNum.getResult("!")).willReturn(-1);
         given(mockMultiplyByTwo.getResult(-1)).willReturn(-2);
         given(mockNumToChar.getResult(-2)).willReturn("");
-        //When I enter the string "1"
+        //When I enter the string "!"
         IFlow IF = new Flow(mockCharToNum, mockMultiplyByTwo, mockNumToChar);
-        IF.getResult("1");
+        IF.getResult("!");
         //Then: MultiplyByTwo will be called zero times
         verify(mockMultiplyByTwo, times(0)).getResult(-1);
     }
 
     @Test
-    public void givenOneCallNumToCharZeroTimes() {
+    public void givenExclamationPointCallNumToCharZeroTimes() {
         //Given I am a user
-        given(mockCharToNum.getResult("1")).willReturn(-1);
+        given(mockCharToNum.getResult("!")).willReturn(-1);
         given(mockMultiplyByTwo.getResult(-1)).willReturn(-2);
         given(mockNumToChar.getResult(-2)).willReturn("");
-        //When I enter the string "1"
+        //When I enter the string "!"
         IFlow IF = new Flow(mockCharToNum, mockMultiplyByTwo, mockNumToChar);
-        IF.getResult("1");
-        //Then: MultiplyByTwo will be called zero times
+        IF.getResult("!");
+        //Then: NumToChar will be called zero times
         verify(mockNumToChar, times(0)).getResult(-2);
+    }
+
+    @Test
+    public void givenABCCallCharToNumThreeTimes() {
+        //Given: I am a user
+        given(mockCharToNum.getResult("a")).willReturn(1);
+        given(mockMultiplyByTwo.getResult(1)).willReturn(2);
+        given(mockNumToChar.getResult(2)).willReturn("b");
+        given(mockCharToNum.getResult("b")).willReturn(2);
+        given(mockMultiplyByTwo.getResult(2)).willReturn(4);
+        given(mockNumToChar.getResult(4)).willReturn("d");
+        given(mockCharToNum.getResult("c")).willReturn(3);
+        given(mockMultiplyByTwo.getResult(3)).willReturn(6);
+        given(mockNumToChar.getResult(6)).willReturn("f");
+        //When: I enter the string "abc"
+        IFlow IF = new Flow(mockCharToNum, mockMultiplyByTwo, mockNumToChar);
+        IF.getResult("abc");
+        //Then: CharToNum will be called 3 times
+        verify(mockCharToNum, times(3)).getResult(a)
     }
 }

@@ -5,6 +5,7 @@ import java.util.Scanner;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.AbstractApplicationContext;
 
 @SpringBootApplication
 public class Exercise2Application {
@@ -15,12 +16,12 @@ public class Exercise2Application {
 		Scanner s = new Scanner(System.in);
 		System.out.println("Enter your message: ");
 		String message = s.nextLine();
-		String result = "";
-		for (int i = 0; i < message.length(); i++) {
-			result += IF.getResult(String.valueOf(message.charAt(i)));
-		}
-		System.out.println(result);
+		System.out.println(IF.getResult(message));
 		s.close();
+		((AbstractApplicationContext)context).close();
 	}
-
 }
+
+//be able to decrypt message
+//spaces get a random odd number between 26 and 52 and return capital associated with that
+//replace numbers with 10-number EXCEPT 0
