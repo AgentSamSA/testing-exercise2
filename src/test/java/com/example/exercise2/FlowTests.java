@@ -232,6 +232,6 @@ public class FlowTests {
         IFlow IF = new Flow(mockCharToNum, mockMultiplyByTwo, mockNumToChar);
         IF.getResult("abc");
         //Then: CharToNum will be called 3 times
-        verify(mockCharToNum, times(3)).getResult(a)
+        verify(mockCharToNum, times(3)).getResult("a");
     }
 }

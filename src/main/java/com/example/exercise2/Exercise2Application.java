@@ -12,11 +12,11 @@ public class Exercise2Application {
 
 	public static void main(String[] args) {
 		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
-		IFlow IF = context.getBean("iFlow", Flow.class);
+		IFlowLooper IFL = context.getBean("iFlowLooper", FlowLooper.class);
 		Scanner s = new Scanner(System.in);
 		System.out.println("Enter your message: ");
 		String message = s.nextLine();
-		System.out.println(IF.getResult(message));
+		System.out.println(IFL.getResult(message));
 		s.close();
 		((AbstractApplicationContext)context).close();
 	}

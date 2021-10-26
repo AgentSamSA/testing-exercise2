@@ -22,7 +22,12 @@ public class AppConfig {
     }
 
     @Bean(name = "iFlow")
-        public IFlow createFlow() {
-            return new Flow(createCharToNum(), createMultiplyByTwo(), createNumToChar());
+    public IFlow createFlow() {
+        return new Flow(createCharToNum(), createMultiplyByTwo(), createNumToChar());
+    }
+
+    @Bean(name = "iFlowLooper")
+    public IFlowLooper creatFlowLooper() {
+        return new FlowLooper(createFlow());
     }
 }
