@@ -1,4 +1,4 @@
-package com.example.exercise2;
+package com.example.exercise2.Divide;
 
 public class DivideByTwo implements IDivideByTwo {
     public int getResult(int num) {

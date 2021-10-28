@@ -1,4 +1,4 @@
-package com.example.exercise2;
+package com.example.exercise2.NumToChar;
 
 public class NumToChar implements INumToChar {
     public String getResult(int num) {

@@ -1,9 +1,9 @@
-package com.example.exercise2;
+package com.example.exercise2.Flow;
 
 public class FlowLooper implements IFlowLooper {
     private IFlow _IF;
 
-    FlowLooper(IFlow IF) {
+    public FlowLooper(IFlow IF) {
         _IF = IF;
     }
 

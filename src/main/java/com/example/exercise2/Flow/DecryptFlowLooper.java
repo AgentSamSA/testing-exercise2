@@ -1,9 +1,9 @@
-package com.example.exercise2;
+package com.example.exercise2.Flow;
 
 public class DecryptFlowLooper implements IDecryptFlowLooper {
     private IDecryptFlow _IDF;
 
-    DecryptFlowLooper(IDecryptFlow IDF) {
+    public DecryptFlowLooper(IDecryptFlow IDF) {
         _IDF = IDF;
     }
 

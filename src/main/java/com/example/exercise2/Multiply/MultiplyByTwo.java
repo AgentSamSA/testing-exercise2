@@ -1,4 +1,4 @@
-package com.example.exercise2;
+package com.example.exercise2.Multiply;
 
 public class MultiplyByTwo implements IMultiplyByTwo {
     public int getResult(int num) {

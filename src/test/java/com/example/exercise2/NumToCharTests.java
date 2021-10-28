@@ -2,6 +2,9 @@ package com.example.exercise2;
 
 import static org.junit.Assert.assertEquals;
 
+import com.example.exercise2.NumToChar.INumToChar;
+import com.example.exercise2.NumToChar.NumToChar;
+
 import org.junit.Test;
 
 public class NumToCharTests {

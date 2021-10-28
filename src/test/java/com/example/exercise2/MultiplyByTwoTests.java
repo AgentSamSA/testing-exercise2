@@ -2,6 +2,9 @@ package com.example.exercise2;
 
 import static org.junit.Assert.assertEquals;
 
+import com.example.exercise2.Multiply.IMultiplyByTwo;
+import com.example.exercise2.Multiply.MultiplyByTwo;
+
 import org.junit.Test;
 
 public class MultiplyByTwoTests {

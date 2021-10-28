@@ -2,6 +2,9 @@ package com.example.exercise2;
 
 import static org.junit.Assert.assertEquals;
 
+import com.example.exercise2.Divide.DivideByTwo;
+import com.example.exercise2.Divide.IDivideByTwo;
+
 import org.junit.Test;
 
 public class DivideByTwoTests {
